@@ -2,12 +2,14 @@ import express from 'express'
 import authRoutes from './routers/authRoutes.js'
 import messageRoute from './routers/messageRoute.js'
 import { connectDB } from './lib/db.js'
+import path from 'path'
 import dotenv from 'dotenv'
 import matchRoute from './routers/matchRoute.js'
 import { protectRoute } from './middlewares/protectRoute.js'
 import cors from 'cors'
 import { app, server } from './socket/socket.js'
 dotenv.config()
+const __dirname = path.dirname(__filename)
 
 const corsOption = {
   credentials: true,
@@ -24,7 +26,13 @@ app.use('/uploads', express.static('uploads'))
 app.use(protectRoute)
 app.use('/api/match', matchRoute)
 app.use('/api/message', messageRoute)
-
+app.use(express.static(path.join(__dirname, 'public')))
+// 所有其他請求轉發到 Next.js
+app.get('*', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, 'public', '.next', 'server', 'pages', 'index.html')
+  )
+})
 const port = process.env.PORT
 server.listen(port, () => {
   connectDB()
