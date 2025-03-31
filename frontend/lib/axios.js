@@ -1,9 +1,9 @@
 import axios from 'axios'
 
 const API_SEVER =
-  import.meta.env.MODE === 'development' ? 'http://localhost:3001/api/' : '/api'
+  process.env.NODE_ENV === 'development' ? 'http://localhost:3001/api/' : '/api'
 export const PUBLIC =
-  import.meta.env.MODE === 'development'
+  process.env.NODE_ENV === 'development'
     ? 'http://localhost:3001/uploads'
     : '/uploads'
 export const axiosInstance = axios.create({
