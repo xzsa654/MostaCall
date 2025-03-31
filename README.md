@@ -18,17 +18,19 @@
 
 ---
 
-```
 環境變數設定
 
-將 sample.env 重新命名成 .env 並修改MONGODB\_URL與JWT\_SECRET  
+將 sample.env 重新命名成 .env 並修改 MONGODB_URL 與 JWT_SECRET
 
-<sub>sapmle.env</sub>  
-<sub>MONGODB\_URL =(自己的database)</sub>
-<sub>PORT=3001</sub>
-<sub>JWT\_SECRET=(自訂key)</sub>
+```
+sapmle.env
+MONGODB\_URL =(自己的database)
+PORT=3001
+JWT\_SECRET=(自訂key)
+```
 
-在本地端運行 
+在本地端運行
 
+```
 npm run dev
 ```
