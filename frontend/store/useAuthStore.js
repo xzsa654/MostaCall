@@ -5,7 +5,8 @@ import { axiosInstance } from '@/lib/axios'
 import { io } from 'socket.io-client'
 const localKey = 'mostaCallAuth'
 // 組合多個中間件，persist 需要在最外層
-const BASE_URL = 'http://localhost:3001'
+const BASE_URL =
+  import.meta.env.MODE === 'development' ? 'http://localhost:3001' : '/'
 const useAuthStore = create(
   immer(
     devtools(

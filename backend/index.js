@@ -24,6 +24,7 @@ app.use('/uploads', express.static('uploads'))
 app.use(protectRoute)
 app.use('/api/match', matchRoute)
 app.use('/api/message', messageRoute)
+
 const port = process.env.PORT
 server.listen(port, () => {
   connectDB()
