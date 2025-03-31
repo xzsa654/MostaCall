@@ -26,13 +26,23 @@ app.use('/uploads', express.static('uploads'))
 app.use(protectRoute)
 app.use('/api/match', matchRoute)
 app.use('/api/message', messageRoute)
-app.use(express.static(path.join(__dirname, 'public')))
-// 所有其他請求轉發到 Next.js
-app.get('*', (req, res) => {
-  res.sendFile(
-    path.join(__dirname, 'public', '.next', 'server', 'pages', 'index.html')
-  )
-})
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/public')))
+  // 所有其他請求轉發到 Next.js
+  app.get('*', (req, res) => {
+    res.sendFile(
+      path.join(
+        __dirname,
+        '../frontend',
+        'public',
+        '.next',
+        'server',
+        'pages',
+        'index.html'
+      )
+    )
+  })
+}
 const port = process.env.PORT
 server.listen(port, () => {
   connectDB()
