@@ -9,7 +9,7 @@ import { protectRoute } from './middlewares/protectRoute.js'
 import cors from 'cors'
 import { app, server } from './socket/socket.js'
 dotenv.config()
-const __dirname = path.dirname(__filename)
+const __dirname = path.resolve()
 
 const corsOption = {
   credentials: true,
