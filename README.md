@@ -24,9 +24,9 @@
 
 ```
 sapmle.env
-MONGODB\_URL =(自己的database)
+MONGODB\_URL =自己的database
 PORT=3001
-JWT\_SECRET=(自訂key)
+JWT\_SECRET=自訂key
 ```
 
 在本地端運行
